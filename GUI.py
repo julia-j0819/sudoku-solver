@@ -1,5 +1,4 @@
 # GUI.py
-# RUN THIS FILE
 import pygame
 from solver import solve, valid
 import time
@@ -7,7 +6,6 @@ pygame.font.init()
 
 
 class Grid:
-    # To change the starting board change this
     board = [
         [7, 8, 0, 4, 0, 0, 1, 2, 0],
         [6, 0, 0, 0, 7, 5, 0, 0, 9],
@@ -51,7 +49,6 @@ class Grid:
         self.cubes[row][col].set_temp(val)
 
     def draw(self, win):
-        # Draw Grid Lines
         gap = self.width / 9
         for i in range(self.rows+1):
             if i % 3 == 0 and i != 0:
@@ -61,13 +58,11 @@ class Grid:
             pygame.draw.line(win, (0,0,0), (0, i*gap), (self.width, i*gap), thick)
             pygame.draw.line(win, (0, 0, 0), (i * gap, 0), (i * gap, self.height), thick)
 
-        # Draw Cubes
         for i in range(self.rows):
             for j in range(self.cols):
                 self.cubes[i][j].draw(win)
 
     def select(self, row, col):
-        # Reset all other
         for i in range(self.rows):
             for j in range(self.cols):
                 self.cubes[i][j].selected = False
